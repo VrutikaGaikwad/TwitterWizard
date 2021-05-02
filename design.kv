@@ -1,0 +1,102 @@
+WindowManager:
+    Home:
+    UserBased:
+    KeywordBased:
+
+
+<Home>:
+    name: "home"
+
+    GridLayout:
+        cols:1
+        Button:
+            text:"User Based Analysis"
+            on_press:
+                app.root.current = "userbased"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text:"Keyword Based Analysis"
+            on_press:
+                app.root.current = "keywordbased"
+                root.manager.transition.direction = "left"
+
+
+<UserBased>:
+    name: "userbased"
+    username : username
+    ntweets : ntweets
+
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:2
+            Label:
+                text: "Username"
+
+            TextInput:
+                id:username
+                multiline: False
+
+            Label:
+                text: "Number of Tweets"
+
+            TextInput:
+                id: ntweets
+                multiline: False
+
+            Button:
+                text: "Pie Graph"
+                on_press: root.pie_chart()
+
+            Button:
+                text: "Line Graph"
+                on_press:root.line_chart()
+
+            Button:
+                text: "Clear"
+                on_press:
+                    root.clear()
+
+            Button:
+                text: "Home"
+                on_press:
+                    root.clear()
+                    app.root.current = "home"
+                    root.manager.transition.direction = "right"
+
+
+<KeywordBased>:
+    name: "keywordbased"
+    keyword: kword
+
+    GridLayout:
+        cols: 1
+
+        GridLayout:
+            cols: 2
+            Label:
+                text: "Keyword"
+            TextInput:
+                id: kword
+                multiline: False
+
+            Button:
+                text: "Pie Graph"
+                on_press: root.pie_chart()
+
+            Button:
+                text: "Line Graph"
+                on_press: root.line_chart()
+
+            Button:
+                text: "Clear"
+                on_press:
+                    root.clear()
+
+            Button:
+                text: "Home"
+                on_press:
+                    root.clear()
+                    app.root.current = "home"
+                    root.manager.transition.direction = "right"
